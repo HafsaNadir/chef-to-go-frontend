@@ -1,0 +1,89 @@
+<div class="profile-page-main-wrapper">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="profile-page-wrapper-box">
+                    <h5>Profile Update</h5>
+                    <!-- <p>Your changes have been successfully saved.</p> -->
+                    
+                    <div class="show-1"></div>
+                    <div class="row">
+                        <div class="col-12 col-sm-12 col-md-12 col-lg-6">
+                            <label>First Name</label>
+                            <input type="text" name="firstNameE" id="firstNameE"
+                            [(ngModel)]="firstNameE" placeholder="Jhon">
+                        </div>
+                        <div class="col-12 col-sm-12 col-md-12 col-lg-6">
+                            <label>Last Name</label>
+                            <input type="text" name="lastNameE" id="lastNameE"
+                            [(ngModel)]="lastNameE" placeholder="Smith">
+                        </div>
+                        <div class="col-12 col-sm-12 col-md-12 col-lg-6">
+                            <label>Mobile Number</label>
+                            <input type="text" name="phoneNumberE" id="phoneNumberE"
+                            [(ngModel)]="phoneNumberE" placeholder="989-867-5309">
+                        </div>
+                        <div class="col-12 col-sm-12 col-md-12 col-lg-6">
+                            <label>Email</label>
+                            <input type="email" name="emailE" id="emailE"
+                            [(ngModel)]="emailE" placeholder="jhonsmith@gmail.com" readonly="true">
+                        </div>
+                        <div class="mb-3">
+                            <div class="col-12 col-sm-12 col-md-12">
+                                <label>
+                                    Profile Picture
+                                </label>
+                            </div>
+                            <div class="form-group " *ngIf="!previewUrlE" >
+                                <input class="form-c" type="file" name="imageE" (change)="fileProgress($event)" />
+                            </div>
+                            <div *ngIf="fileUploadProgress">
+                                Upload progress: {{ fileUploadProgress }}
+                            </div>
+                            <div class="col-12 col-sm-12 col-md-12 mt-3" *ngIf="previewUrlE">
+                                <img [src]="previewUrlE" height="80" />   &nbsp; &nbsp;
+                                <span (click)="removeImg()" style="color:orange" >Change image</span>              
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+                            <button style="background-color:#ff3800" [disabled]="this.isLoading" (click)="onSubmitEdit()">save changes
+                                <i class="fa fa-spinner fa-spin" *ngIf="this.isLoading"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="profile-page-wrapper-box">
+                    <h5>Password Update</h5>
+                    
+                    <div class="show-2"></div>
+                    <div class="row">
+                        <div class="col-12 col-sm-12 col-md-12 col-lg-6">
+                            <label>Current Password</label>
+                            <input type="password" class="form-control" name="currentPassword" id="currentPassword"
+                                [(ngModel)]="currentPassword" placeholder="*********">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12 col-sm-12 col-md-12 col-lg-6">
+                            <label>New Password</label>
+                            <input type="password" class="form-control" name="newPassword" id="newPassword"
+                                [(ngModel)]="newPassword" placeholder="*********">
+                        </div>
+                        <div class="col-12 col-sm-12 col-md-12 col-lg-6">
+                            <label>Confirm Password</label>
+                            <input type="password" class="form-control" name="confirmPassword" id="confirmPassword"
+                                [(ngModel)]="confirmPassword" placeholder="*********">
+                        </div>
+                        <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+                            <button style="background-color:#ff3800" [disabled]="this.isLoading" (click)="editPass()">save changes
+                                <i class="fa fa-spinner fa-spin" *ngIf="this.isLoading"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

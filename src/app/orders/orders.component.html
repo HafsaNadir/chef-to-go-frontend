@@ -1,0 +1,221 @@
+<div class="order-page-wrapper">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="order-page-wrapper-text">
+                    <h5>My Orders
+                        <span style="display: none;">
+                            Show :
+                            <select>
+                                <option>Last 5 orders</option>
+                            </select>
+                        </span>
+                    </h5>
+                </div>
+            </div>
+            <div *ngFor="let order of orderData" class="col-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="order-boxes">
+                    <h6>Order <a style="color:#ff3800;cursor:pointer;" data-toggle="modal" data-target="#orderModal"
+                            (click)="orderDetailModal(order._id)">#{{order.orderId}}</a>
+                    </h6>
+                    <h5>Placed on {{order.createdDate | date: 'medium'}}
+                        <span style="float: right;color :#ff3800">
+                            Total Price : {{order.totalPriceWithDiscount}}
+                        </span>
+
+
+                    </h5>
+                    <div *ngFor="let orderDetail of order.orderDetails;let i = index" class="order-boxes-1">
+                        <div class="order-boxes-2">
+                            <div class="order-boxes-2-inner-first {{ (i > 0)? 'hide' : ''}} ">
+                                <img height="60px" src="{{imageUrl+order.restaurantId.image}}">
+                            </div>
+                            <div class="order-boxes-2-inner-second">
+                                <h6> <span class="{{ (i > 0)? 'hide' : ''}}"> {{order.restaurantId.name}} </span> <i
+                                        class="{{ (i > 0)? 'hide' : ''}}"> {{order?.restaurantId.city}},
+                                        {{order?.restaurantId.state}} </i>
+                                    <!-- <a href="#!">Qty: {{orderDetail.quantity}}</a> -->
+                                </h6>
+                                <!-- <p>{{orderDetail.name }}, {{ orderDetail.shortDesc}}</p> -->
+                            </div>
+                        </div>
+                        <div class="order-boxes-3">
+                            <ng-container *ngIf="(order.status == 'pending' || order.status == 'expired') && i == 0">
+                                <div class="order-boxes-3-inner-first">
+                                    <button disabled="disabled">Pending</button>
+                                    <!-- <p>Cancelled on 23 Jan 2020</p>  -->
+                                </div>
+
+                            </ng-container>
+                            <ng-container *ngIf="order.status == 'accept'  && i == 0">
+                                <div class="order-boxes-3-inner-first">
+                                    <button disabled="disabled" class="btn-accept">Accepted</button>
+                                    <!-- <p>Cancelled on 23 Jan 2020</p>  -->
+                                </div>
+
+                            </ng-container>
+                            <ng-container *ngIf="(order.status == 'reject' || order.status == 'cancelled')  && i == 0">
+                                <div class="order-boxes-3-inner-first">
+                                    <button disabled="disabled" class="btn-danger">Cancelled</button>
+                                    <!-- <p>Cancelled on 23 Jan 2020</p>  -->
+                                </div>
+                            </ng-container>
+                            <ng-container *ngIf="(order.status == 'delivered' )  && i == 0">
+                                <div class="order-boxes-3-inner-first">
+                                    <button disabled="disabled" class="btn-delivery">Delivered</button>
+                                    <!-- <p>Cancelled on 23 Jan 2020</p>  -->
+                                </div>
+                            </ng-container>
+                        </div>
+                    </div>
+                    &nbsp;
+                    <a style="color:#ff3800;cursor:pointer;" data-toggle="modal" data-target="#messageModal"
+                        (click)="orderModal(order._id)">Message For Restaurant</a>
+                </div>
+            </div>
+            <div style="display: none;" class="col-12 col-sm-12 col-md-12 col-lg-12">
+                <div class="order-boxes">
+                    <h6>Order <span>#113649009614734</span></h6>
+                    <h5>Placed on 23 Jan 2020 13:36:52</h5>
+                    <div class="order-boxes-1">
+                        <div class="order-boxes-2">
+                            <div class="order-boxes-2-inner-first">
+                                <img src="assets/images/order-img-1.webp">
+                            </div>
+                            <div class="order-boxes-2-inner-second">
+                                <h6> <span> McDonald's </span> Manhattan, New York City <a href="#!">Qty: </a></h6>
+                                <p>Chicken Mac, McChicken without Cheese, 6 pieces nuggets without Sauce & 3 Medium
+                                    Carbonated Soft Drinks</p>
+                            </div>
+                        </div>
+                        <div class="order-boxes-3">
+                            <div class="order-boxes-3-inner-first">
+                                <button class="btn-delivery">Delivered</button>
+                                <p>Delivered on 11 Nov 2019</p>
+                            </div>
+                            <div class="order-boxes-3-inner-second">
+                                <button>recoder</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="order-boxes-1">
+                        <div class="order-boxes-2">
+                            <div class="order-boxes-2-inner-first">
+                                <img src="assets/images/order-img-1.webp">
+                            </div>
+                            <div class="order-boxes-2-inner-second">
+                                <h6> <span> McDonald's </span> Manhattan, New York City <a href="#!">Qty: 1</a></h6>
+                                <p>Chicken Mac, McChicken without Cheese, 6 pieces nuggets without Sauce &amp; 3 Medium
+                                    Carbonated Soft Drinks</p>
+                            </div>
+                        </div>
+                        <div class="order-boxes-3">
+                            <div class="order-boxes-3-inner-first">
+                                <button class="btn-delivery">Delivered</button>
+                                <p>Delivered on 11 Nov 2019</p>
+                            </div>
+                            <div class="order-boxes-3-inner-second">
+                                <button>recoder</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--
+
+                <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+                    <div class="order-boxes">
+                        <h6>Order <span>#113649009614734</span></h6>
+                        <h5>Placed on 23 Jan 2020 13:36:52</h5>
+                        <div class="order-boxes-1">
+                            <div class="order-boxes-2">
+                                <div class="order-boxes-2-inner-first">
+                                    <img src="assets/images/order-img-1.webp">
+                                </div>
+                                <div class="order-boxes-2-inner-second">
+                                    <h6> <span> McDonald's </span>  Manhattan, New York City <a href="#!">Qty: 1</a></h6>
+                                    <p>Chicken Mac, McChicken without Cheese, 6 pieces nuggets without Sauce & 3 Medium Carbonated Soft Drinks</p>
+                                </div>
+                            </div>
+                            <div class="order-boxes-3">
+                                <div class="order-boxes-3-inner-first">
+                                    <button>Cancelled</button>
+                                </div>
+                                <div class="order-boxes-3-inner-second">
+                                    <button>recoder</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+                    <div class="order-boxes">
+                        <h6>Order <span>#113649009614734</span></h6>
+                        <h5>Placed on 23 Jan 2020 13:36:52</h5>
+                        <div class="order-boxes-1">
+                            <div class="order-boxes-2">
+                                <div class="order-boxes-2-inner-first">
+                                    <img src="assets/images/order-img-1.webp">
+                                </div>
+                                <div class="order-boxes-2-inner-second">
+                                    <h6> <span> McDonald's </span>  Manhattan, New York City <a href="#!">Qty: 1</a></h6>
+                                    <p>Chicken Mac, McChicken without Cheese, 6 pieces nuggets without Sauce & 3 Medium Carbonated Soft Drinks</p>
+                                </div>
+                            </div>
+                            <div class="order-boxes-3">
+                                <div class="order-boxes-3-inner-first">
+                                    <button class="btn-process">Process</button>        
+                                </div>
+                                <div class="order-boxes-3-inner-second">
+                                    <button class="view-btn">View Status</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            -->
+        </div>
+    </div>
+</div>
+
+<div id="messageModal" class="modal fade">
+    <div class="modal-dialog modal-md">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Message For Restaurant</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            </div>
+            <div class="modal-body">
+                <input type="text" name="message" [(ngModel)]="message" class="form-control">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                <button class="btn" (click)="sendMessage(this.orderId)">send</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="orderModal" class="modal fade">
+    <div class="modal-dialog modal-md">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Details</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            </div>
+            <div class="modal-body">
+                <!-- <input type="text" name="message" [(ngModel)]="message" class="form-control"> -->
+                <ng-container *ngFor="let order of orderDetail; let i = index">
+
+                    <h6>Qty: {{order.quantity}}</h6>
+                    <span>
+                        <p>{{order.name }}</p>
+                    </span>
+
+                </ng-container>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+            </div>
+        </div>
+    </div>
+</div>

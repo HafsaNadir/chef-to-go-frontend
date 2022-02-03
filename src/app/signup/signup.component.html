@@ -1,0 +1,53 @@
+<div class="first_screen_wrapper">
+  <div class="container">
+      <div class="row">
+          <div class="col-12 col-sm-12 col-md-12 offset-lg-5 col-lg-6">
+              <div class="first_screen_wrapper_header">
+                  <div>
+                    <a href="javascript:;" routerLink="/" routerLinkActive="active" class="mb-2 btn-cust d-inline-block p-1 border-0"><i class="fa fa-chevron-left"></i> Go back?</a>
+                  </div>                  
+                  <img  routerLink="/" routerLinkActive="active" src="assets/images/logo.webp" class="cursor logo">
+                                    
+                  <h5>Welcome to Chef to Go</h5>
+                  <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa.</p>
+                  <button (click)="fbLogin()"><i class="fab fa-facebook-f"></i>facebook login</button>
+                  <h6>OR</h6>
+              </div>
+              <div class="first_screen_wrapper_forum">
+                  <div class="row">
+                      <div class="col-12 col-sm-6 col-md-6 col-lg-6">
+                          <label>First Name</label>
+                          <input type="text" class="form-c" name="firstName" id="firstName" [(ngModel)]="firstName" placeholder="Jhon">
+                      </div>
+                      <div class="col-12 col-sm-6 col-md-6 col-lg-6">
+                          <label>last Name</label>
+                          <input type="text" class="form-c" [(ngModel)]="lastName" name="lastName" id="lastName" placeholder="Smith">
+                      </div>
+                      <div class="col-12 col-sm-6 col-md-6 col-lg-6">
+                          <label>Mobile Number</label>
+                          <input type="text" class="form-c" [(ngModel)]="phoneNo" name="phoneNo" id="phoneNo" placeholder="949-867-5309">
+                      </div>
+                      <div class="col-12 col-sm-6 col-md-6 col-lg-6">
+                          <label>Email</label>
+                          <input type="email" class="form-c" [(ngModel)]="email" name="email" id="email" placeholder="jhonsmith@gmail.com">
+                      </div>
+                      <div class="col-12 col-sm-6 col-md-6 col-lg-6">
+                          <label>Password</label>
+                          <input type="password" class="form-c"  [(ngModel)]="password" name="password"  id="password" placeholder="************">
+                      </div>
+                      <div class="col-12 col-sm-6 col-md-6 col-lg-6">
+                          <label>Confirm Password</label>
+                          <input type="password" class="form-c"  [(ngModel)]="confirmPassword" name="confirmPassword" id="confirmPassword" placeholder="************">
+                      </div>
+                  </div>
+              </div>
+              <div class="first_screen_wrapper_footer">
+                  <button type="button" (click)="register()" [disabled]="this.isLoading">register
+                    <i class="fa fa-spinner fa-spin" *ngIf="this.isLoading"></i>
+                  </button>
+                  <h5>Already have an account? <a   href="javascript:;">login</a></h5>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>

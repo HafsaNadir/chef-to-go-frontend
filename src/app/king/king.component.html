@@ -1,0 +1,154 @@
+<section class="banner-slider banner-slider-inner p-0" data-aos="fade-down" data-aos-delay="100">
+  <div class="banner-slider-track">
+      <div class="slide active" style="background-image: url('assets/images/slide-inner.webp')" data-slide-heading="" data-slide-sub-heading="">
+      </div>
+      <div class="slide" style="background-image: url('assets/images/slide1.webp')" data-slide-heading="" data-slide-sub-heading="">
+      </div>
+      <div class="slide" style="background-image: url('assets/images/slide-inner.webp')" data-slide-heading="" data-slide-sub-heading="">
+      </div>
+  </div>
+  <div class="banner-slider-content" data-aos="zoom-in" data-aos-delay="200">
+      <div class="container h-100">
+          <div class="row h-100 align-items-center position-relative">
+              <div class="col-md-12 dots-col">
+                  <ul class="dots m-0 p-0 d-flex justify-content-center">
+                  </ul>
+              </div>
+          </div>
+      </div>
+  </div>
+</section>
+<section class="">
+  <div class="container">
+      <div class="row">
+          <div class="col-md-12 col-sm-12 text-center">
+              <h2 class="section-heading section-heading-no-b" data-aos="zoom-in">
+                  Order from the best restaurants in your area
+              </h2>   
+          </div>
+      </div>
+
+
+      <div class="row my-2 mb-3">
+          <div class="col-md-9 col-sm-9 text-center">
+              <div class="input-group filter">
+                  <div class="input-group-prepend">
+                      <span class="input-group-text" ><img src="assets/images/search.webp"></span>
+                  </div>
+
+                  <input type="text"  [(ngModel)]="term" class="form-control" aria-label="Text input with dropdown button" placeholder="Search Restaurants ...">
+                  <select class="multiselect" multiple="" id="exampleFormControlSelect1" data-multiselect-placeholder="Filters" data-multiselect-btnimage="assets/images/icon-filter2.webp"  >
+                      <option>Beverages</option>
+                      <option>Salad</option>
+                      <option>Sandwich</option>
+                      <option>Turkish</option>
+                      <option>Fast Food</option>
+                      <option>Lebanese</option>
+                      <option>Chicken</option>
+                  </select>
+                  
+              </div>
+          </div>
+          <div class="col-md-3 col-sm-3 text-right">
+              <div class="mt-4">
+                  <a href="#" class="btn-cust-lg btn-cust-filled-lg">Hot Deals</a> 
+              </div> 
+          </div>                    
+      </div>
+
+      <div class="row" *ngIf="searchData">
+          <div class="col-md-10 offset-md-1 col-sm-12 text-center">
+              <h2 class="section-heading mt-3" data-aos="zoom-in">
+                 Popular Cuisines
+              </h2>
+              <p class="para mt-3 text-center mb-0" data-aos="zoom-in" data-aos-delay="100">
+                  What are your favorite cuisines?
+              </p>
+          </div>
+      </div>
+      <div class="row" *ngIf="!searchData">
+        <div class="col-md-10 offset-md-1 col-sm-12 ">
+            <div class="vendor-list-empty-message">
+                <p>&nbsp;</p>
+                <h2 >No restaurants nearby</h2>
+                <p >We don't have restaurants here yet. Try looking in another area.</p></div>  
+                  </div>
+    </div>
+
+      <app-slider *ngIf="searchData" ></app-slider>
+  </div>            
+</section>
+<section class="p-0">
+  <div class="container">
+      <div class="row">
+          <div  id="loading" class="col-md-10 col-sm-10 offset-sm-1 offset-md-1 text-center loading">
+              <div style="display:none;" class="resturant-list-item" data-aos="fade-up"  data-aos-delay="100">
+                    <div class="resturant-banner" style="background-image: url('assets/images/berlin-banner.webp');">
+                        <div class="left-badge">FLAT 30% OFF</div>
+                        <div class="right-badge">4.7</div>
+                    </div>
+                    <div class="content">
+                        <div class="logo-wrapper">
+                            <div  routerLink="../resturant-detail" routerLinkActive="active" class="logo cursor">
+                                <img src="assets/images/berlin.webp" class="img-fluid">
+                            </div>
+                        </div>
+                        <h2  routerLink="../resturant-detail" routerLinkActive="active" class="cursor section-heading section-heading-no-b my-1">Berlin Doner &amp; Gyro</h2>
+                        <p class="para mt-0 text-center mb-1">
+                            Manhattan, New York City
+                        </p>
+                        <ul class="para food-cat">
+                            <li>Beverages</li>
+                            <li>Salad</li>
+                            <li>Sandwich</li>
+                            <li>Turkish</li>
+                            <li>Fast Food</li>
+                            <li>Lebanese</li>
+                            <li>Chicken</li>
+                        </ul>
+                        <ul class="para d-flex justify-content-between flex-wrap food-info mb-0">
+                            <li><img src="assets/images/icon-delivery.webp"><span>Delivery fee <b>$2</b></span> </li>
+                            <li><img src="assets/images/icon-dine-in.webp"><span><b>Dine In</b></span> </li>
+                            <li><img src="assets/images/icon-take-away.webp"><span><b>Take Out</b></span> </li>
+                            <li><img src="assets/images/icon-delivery.webp"><span>Minimum Order <b> $25</b></span> </li>
+                        </ul>
+                    </div>
+              </div>     
+              <ng-container *ngFor="let sd of searchData | filter:term" >
+   
+              <div class="resturant-list-item" data-aos="fade-up">
+                    <div class="resturant-banner" style="background-image: url({{imageBase+sd.coverPhoto}});">
+                        <div  *ngIf="sd.shortDescDiscount" class="left-badge"  title="{{sd?.longDescDiscount}}" >{{sd?.shortDescDiscount}}</div>
+                        <div style="display: none;"  class=" right-badge">4.7</div>
+                    </div>
+                    <div class="content">
+                        <div class="logo-wrapper">
+                            <div (click)="link(sd.slug)" class="logo cursor">
+                                <img src="{{imageBase+sd.image}}" class="img-fluid">
+                            </div>
+                        </div>
+                        <h2  (click)="link(sd.slug)" class="cursor section-heading section-heading-no-b my-1">{{sd?.name}}</h2>
+                        <p class="para mt-0 text-center mb-1">
+                            {{sd?.city}}, {{sd?.state}}
+                        </p>
+                        <ul class="para food-cat">
+                        <li *ngFor="let c of sd.categoryName" >{{c}}</li>
+                        </ul>
+                        <ul class="para d-flex justify-content-between flex-wrap food-info mb-0">
+                            <li *ngIf="sd.delivery"><img src="assets/images/icon-delivery.webp"><span>Delivery fee <b>${{sd.deliveryFee}}</b></span> </li>
+                            <li *ngIf="sd.dineIn" ><img src="assets/images/icon-dine-in.webp"><span><b>Dine In</b></span> </li>
+                            <li *ngIf="sd.takeAway"><img src="assets/images/icon-take-away.webp"><span><b>Take Out</b></span> </li>
+                            <li *ngIf="sd.minOrder" >
+                                <span>Minimum Order <b> ${{sd.minOrder}}</b></span> </li>
+                        </ul>
+                    </div>
+              </div>    
+            </ng-container>  
+              <div  style="display:none;" class="mb-5 mt-5 text-center" data-aos="fade-up">
+                  <a href="#" class="btn-cust-green-lg btn-cust-green-filled-lg">Load More Restaurant</a> 
+              </div>                                                                               
+          </div>
+      </div>
+  </div>
+</section> 
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>

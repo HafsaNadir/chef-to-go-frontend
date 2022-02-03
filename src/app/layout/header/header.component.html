@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Chef To Go</title>
+        <!--link rel="icon" href="assets/images/favicon.webp"-->
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!--
+        <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+        <link rel="stylesheet" href="assets/fontawesome/css/all.css">
+        <link rel="stylesheet" href="assets/slick/slick/slick.css">
+        <link rel="stylesheet" href="assets/slick/slick/slick-theme.css">
+        <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="assets/css/multiselect.css">
+        <link rel="stylesheet" href="assets/css/style.css">
+    -->
+    </head>
+        <header  class="header-c"  >
+            <nav>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-3 col-4"><img  routerLink="/" routerLinkActive="active" src="assets/images/logo.webp" class="cursor img-fluid logo"></div>
+                        <ng-container *ngIf="!isLogin" >
+                            <div class="col-md-3 offset-md-6 col-8">
+                            
+                                <ul class="d-flex justify-content-end p-0 m-0 flex-wrap h-100 align-items-center">
+                                    <li><a href="javascript:;"  routerLink="/login" routerLinkActive="active"  class="btn-cust">Login</a></li>
+                                    <li><a href="javascript:;"  routerLink="/signup" routerLinkActive="active" class="btn-cust btn-cust-filled ml-md-2">Register</a></li>
+                                </ul>
+                            </div>
+    
+                        </ng-container>
+                        <ng-container *ngIf="isLogin" >
+                            <div class="col-md-4 offset-md-5 col-8">
+                                <nav class="navbar header-navbar pcoded-header iscollapsed " header-theme="theme1" pcoded-header-position="fixed">
+                                    <div class="navbar-wrapper">
+                                        <div class="navbar-container container-fluid">
+                                            <ul class="nav-right">
+                                                <li class="header-notification">
+                                                    <a href="#!" class="notification-btn">
+                                                    <img src="assets/images/bell.webp">
+                                                    <span class="badge bg-c-pink"></span>
+                                                    </a>
+                                                    <ul class="show-notification" *ngIf="   notification">
+                                                        <li>
+                                                            <h6>Notifications</h6>
+                                                            <label class="label label-danger">New</label>
+                                                        </li>
+                                                        <li *ngFor="let notify of notification">
+                                                            <div class="media">
+                                                                <img class="d-flex align-self-center img-radius" src="{{imageUrl +notify.restaurantId.image}}" alt="Generic placeholder image">
+                                                                <div class="media-body">
+                                                                    <h5 class="notification-user">{{notify.restaurantId.name}} <small class="float-right">order#{{notify.orderId.orderId}}</small></h5>
+                                                                    <p class="notification-msg"> {{notify.message}}</p>
+                                                                    <span class="notification-time">{{notify.createdDate | date:'medium'}}</span>
+                                                                </div>
+                                                            </div>
+                                                        </li>
+                                                        <!-- <li>
+                                                            <div class="media">
+                                                                <img class="d-flex align-self-center img-radius" src="assets/images/avatar-5.webp" alt="Generic placeholder image">
+                                                                <div class="media-body">
+                                                                    <h5 class="notification-user">Joseph William</h5>
+                                                                    <p class="notification-msg">Lorem ipsum dolor sit amet, consectetuer elit.</p>
+                                                                    <span class="notification-time">30 minutes ago</span>
+                                                                </div>
+                                                            </div>
+                                                        </li> -->
+                                                        <!-- <li>
+                                                            <div class="media">
+                                                                <img class="d-flex align-self-center img-radius" src="assets/images/avatar-5.webp" alt="Generic placeholder image">
+                                                                <div class="media-body">
+                                                                    <h5 class="notification-user">Sara Soudein</h5>
+                                                                    <p class="notification-msg">Lorem ipsum dolor sit amet, consectetuer elit.</p>
+                                                                    <span class="notification-time">30 minutes ago</span>
+                                                                </div>
+                                                            </div>
+                                                        </li> -->
+                                                    </ul>
+                                                </li>
+                                                <li class="user-profile header-notification">
+                                                    <a href="javascript:;">
+                                                        <span  class="1" *ngIf="user?.profilePicture == 'undefined'">
+                                                            <img src="{{imageUrl+'avatar restaurant-Icon.png'}}" class="img-radius img-radius user-image" alt="User-Profile-Image">
+
+                                                        </span>
+                                                        <span class="2" *ngIf="user?.profilePicture != 'undefined'">
+                                                            <img src="{{imageUrl+user?.profilePicture}}" class="img-radius img-radius user-image" alt="User-Profile-Image">
+
+                                                        </span>
+
+                                                    <span>{{user?.firstName}} {{user?.lastName}} </span> &nbsp;
+                                                    <img class="chev" src="assets/images/chev-down.webp">
+                                                    </a>
+                                                    <ul class="show-notification profile-notification  ">
+    
+                                                        <ng-container *ngIf="user && user.userType == 'customer'">
+                                                            <li>
+                                                                <a  routerLink="/my-orders" routerLinkActive="active" href="javascript:;">
+                                                                My Orders
+                                                                </a>
+                                                            </li>
+
+                                                                <li>
+                                                                    <a  routerLink="/profile" routerLinkActive="active" href="javascript:;">
+                                                                    Profile Setting
+                                                                    </a>
+                                                                </li>
+    
+                                                        </ng-container>
+                                                        
+
+                                                        <ng-container *ngIf="user &&  user.userType == 'restaurant_owner'">
+                                                            <li>
+                                                                <a  routerLink="/orders" routerLinkActive="active" href="javascript:;">
+                                                                Orders
+                                                                </a>
+                                                            </li>
+
+                                                            <li>
+                                                                <a  routerLink="/view" routerLinkActive="active" href="javascript:;">
+                                                                Menu Setting
+                                                                </a>
+                                                            </li>
+                                                            <li>
+                                                                <a  routerLink="/restaurant-settings" routerLinkActive="active" href="javascript:;">
+                                                                    Restaurant Setting
+                                                                </a>
+                                                            </li>
+                                                            <li>
+                                                                <a  routerLink="/profile-cover-settings" routerLinkActive="active" href="javascript:;">
+                                                                    Profile cover settings
+                                                                </a>
+                                                            </li>
+                                                            <li>
+                                                                <a  routerLink="/location" routerLinkActive="active" href="javascript:;">
+                                                                    Add location
+                                                                </a>
+                                                            </li>
+                                                            <li>
+                                                                <a  routerLink="/menu-discount" routerLinkActive="active" href="javascript:;">
+                                                                    Menu discount
+                                                                </a>
+                                                            </li>
+
+                                                            <li>
+                                                                <a  routerLink="/profile" routerLinkActive="active" href="javascript:;">
+                                                                    Profile Setting
+                                                                </a>
+                                                            </li>
+        
+                                                            </ng-container>
+
+                                                        <li>
+                                                            <a (click)="logout()" href="javascript:;">
+                                                            Logout
+                                                            </a>
+                                                        </li>
+                                                    </ul>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </nav>
+                            </div>
+    
+                        </ng-container>
+
+                    </div>
+                </div>
+            </nav>
+        </header>
+
+<button id="pop-up-form-order" style="display: none;" data-toggle="modal" data-target="#pop-up-orders" >aaa</button>
+    <div class="pop-up-section modal fade show" id="pop-up-orders" role="dialog" aria-modal="true">
+        <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="pop-up-form">
+                <div class="form-right-wrapper">
+                    <div class="form-logo-wrapper">
+                    <button type="button" class="close" data-dismiss="modal">×</button>
+                    </div>
+                    <div class="quote-form-header">
+                    <p>Order <span id="orderId">#</span></p>
+                    </div>
+                    <div class="form-inner">
+                    <div class="form-inner-1">
+                              <p id="sockerMsg" >
+                                   
+                              </p>  
+                    </div>
+                    </div>
+                    <div class="pop-up-footer">
+                        <div class="row">
+                            <div class="col-12 col-sm-12 col-md-8 col-lg-9 mt-3">
+                                <button  (click)="goToMyOrder()"  href="javascript:;"  >Go to Order Page </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+    </div>

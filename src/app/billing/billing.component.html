@@ -1,0 +1,226 @@
+<section class="delivery-detail-wrapper-main">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-sm-8 col-md-8 col-lg-8">
+                <div class="delivery-detail-wrapper">
+                    <div class="row">
+                        <div class="col-12 col-sm-6 col-md-6 col-lg-6">
+                            <div class="wrap">
+                                <div>
+                                    <h5> <span>1</span> Order Preference</h5>
+
+                                    <select (change)="orderPreferences()" [(ngModel)]="orderPre" name="orderPre"
+                                        class="form-control">
+                                        <option value="null">Select options</option>
+                                        <option value="delivery" *ngIf="this.restaurantData?.delivery">Delivery</option>
+                                        <option value="takeaway" *ngIf="this.restaurantData?.takeAway">Take away
+                                        </option>
+                                        <option value="dineinn" *ngIf="this.restaurantData?.dineIn">Dine Inn</option>
+
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <br /><br />
+                    <h5 *ngIf="deliveryTrue"> <span>2</span> Delivery Details</h5>
+                    <div *ngIf="deliveryTrue" class="row">
+                        <div class="col-12 ol-sm-12 col-md-12 col-lg-12">
+                            <h6>Delivery address</h6>
+                        </div>
+                        <div class="col-12 col-sm-6 col-md-6 col-lg-6">
+                            <div class="wrap">
+                                <div>
+                                    <input type="text" name="building" id="building" [(ngModel)]="building"
+                                        placeholder="Building" class="cool">
+                                    <!-- <label for="fname">Building</label>
+                                <input id="fname" type="text" class="cool"/> -->
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-6 col-md-6 col-lg-6">
+                            <div class="wrap">
+                                <div>
+                                    <input type="text" name="floor" id="floor" [(ngModel)]="floor"
+                                        placeholder="Floor/ Unit" class="cool">
+                                    <!-- <label for="lname">Floor / unit</label>
+                                <input id="lname" type="text" class="cool"/> -->
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-6 col-md-6 col-lg-6">
+                            <div class="wrap">
+                                <div>
+                                    <input type="text" name="area" id="area" [(ngModel)]="area" placeholder="Area"
+                                        class="cool">
+                                    <!-- <label for="email">Area</label>
+                                <input id="email" type="text" class="cool"/> -->
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-6 col-md-6 col-lg-6">
+                            <div class="wrap">
+                                <div>
+                                    <input type="text" name="street" id="street" [(ngModel)]="street"
+                                        placeholder="Street" class="cool">
+                                    <!-- <label for="fname">Street</label>
+                                <input id="fname" type="text" class="cool"/> -->
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+                            <!-- <textarea placeholder="(Optional) Note to rider"></textarea> -->
+                            <button (click)="deliveryAddr()" style="background-color:#ff3800">save</button>
+                        </div>
+                    </div>
+                    <div *ngIf="!isEdit" class="delivery-detail-2">
+                        <div class="row">
+                            <div class="col-12 ol-sm-12 col-md-12 col-lg-12">
+                                <h5> <span>2</span> Personal Details
+                                    <a href="javascript:;" (click)="editTrue(true)" id="opener"> <i
+                                            class="fas fa-edit"></i>Edit</a>
+                                </h5>
+                                <h4>{{firstName}} {{lastName}} </h4>
+                                <p>{{email}}</p>
+                                <p>{{phoneNumber}}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div *ngIf="isEdit" class="delivery-detail-2">
+                        <div class="row">
+                            <div class="col-12 ol-sm-12 col-md-12 col-lg-12">
+                                <h5> <span>2</span> Personal Details
+                                </h5>
+                            </div>
+                            <div class="col-12 col-sm-6 col-md-6 col-lg-6">
+                                <div class="wraps">
+                                    <div>
+                                        <label class="">First Name</label>
+                                        <input type="text" name="firstName" id="firstName" [(ngModel)]="firstName" placeholder="First Name"
+                                            class="cool">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12 col-sm-6 col-md-6 col-lg-6">
+                                <div class="wraps">
+                                    <div>
+                                        <label>Last Name</label>
+                                        <input type="text" name="lastName" id="lastName" [(ngModel)]="lastName" placeholder="Last Name"
+                                            class="cool">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12 col-sm-6 col-md-6 col-lg-6">
+                                <div class="wraps">
+                                    <div>
+                                        <label for="email">Email</label>
+                                        <input id="email" [(ngModel)]="email" name="email" type="text" class="cool"
+                                            readonly="true">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12 col-sm-6 col-md-6 col-lg-6">
+                                <div class="wraps">
+                                    <div>
+                                        <label>Phone Number</label>
+                                        <input id="phoneNumber" [(ngModel)]="phoneNumber" name="phoneNumber" type="text" class="cool"
+                                        >
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="last-bth">
+                            <button (click)="editTrue(false)" style="background-color:#ff3800">Edit save</button>
+                        </div>
+
+                    </div>
+                    <!-- <div class="payment-detail-1">
+                        <div class="row">
+                            <div class="col-12 ol-sm-12 col-md-12 col-lg-12">
+                                <h5> <span>3</span> Payment</h5>
+                                <div class="row">
+                                    <div class="col-12 col-sm-6 col-md-4 col-lg-4">
+                                        <div class="payment-detail-box-1">
+                                            <img src="assets/images/card.webp" class="img-fluid" />
+                                            <h6>credit / debit card</h6>
+                                        </div>
+                                    </div>    
+                                    <div class="col-12 col-sm-6 col-md-4 col-lg-4">
+                                        <div class="payment-detail-box-1">
+                                            <img src="assets/images/cash.jpg" class="img-fluid" />
+                                            <h6>cash on delivery</h6>
+                                        </div>
+                                    </div>
+                                </div>
+                                <h4>pay by cash on delivery</h4>
+                                <p>consider payment upon ordering for contactless delivery</p>
+                                <div class="row">
+                                    <div class="col-12 col-sm-5 col-md-5 col-lg-5">
+                                        <h3>Do you have a voucher? </h3>
+                                    </div>
+                                    <div class="col-12 col-sm-7 col-md-7 col-lg-7">
+                                        <div class="payment-detail-flex">
+                                            <input type="text" name="" placeholder="Enter voucher code">
+                                            <button>apply</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <p>By making this purchase you agree to our <span>terms and conditions</span></p>
+                                <div class="last-bth">
+                                    <button>currently unavailable</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                -->
+                </div>
+            </div>
+            <div class="col-12 col-sm-4 col-md-4 col-lg-4">
+                <div class="calculator_wrapper">
+                    <h4>Your Cart</h4>
+                </div>
+                <ng-container *ngIf="orderData.length > 0">
+                    <div class="calculator_wrapper_box_01">
+                        <h5>Order Items</h5>
+                        <ul *ngFor="let order of orderData">
+                            <li>{{order.quantity}} {{order.name}} <span>$ {{order.price}}</span></li>
+                            <li>
+                                <div class="qty">
+                                    <span (click)="orderQuantity(0,order.id)" class="">-</span>
+                                    <input type="text" class="count" name="qty" value="{{order.quantity}}">
+                                    <span (click)="orderQuantity(1,order.id)" class="">+</span>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+
+                </ng-container>
+                <ng-container *ngIf="orderData.length ==  0">
+                    <div class="calculator_wrapper_box_01 calculator_wrapper_box_02 calculator_wrapper_box_03">
+                        <ul>
+                            <li><img src="assets/images/close.webp" class="img-fluid"></li>
+                            <li>
+                                <p>Cart is empty.</p>
+                            </li>
+                        </ul>
+                    </div>
+
+                </ng-container>
+                <div class="calculator_wrapper_box_01">
+                    <h5>Order Summary</h5>
+                    <ul>
+                        <li>Subtotal <span> $ {{subPrice}}</span></li>
+                        <!--
+                        <li>Delivery fee <span>$ 00.00</span></li>
+                        -->
+                        <li>Total (Incl. GST) <span>$ {{totalPrice}}</span></li>
+                    </ul>
+                    <button (click)="checkout()">Place Order</button>
+                    <br />
+                    <br />
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

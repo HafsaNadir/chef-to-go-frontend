@@ -1,0 +1,80 @@
+<div class="second_screen_wrapper">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-sm-12 col-md-12 offset-lg-5 col-lg-7">
+                <div class="first_screen_wrapper_header second_screen_wrapper_header">                   
+                    <div>
+                        <a href="javascript:;" routerLink="/" routerLinkActive="active" class="mb-2 btn-cust d-inline-block p-1 border-0"><i class="fa fa-chevron-left"></i> Go back?</a>
+                    </div>                  
+                    <img  routerLink="/" routerLinkActive="active" src="assets/images/logo.webp" class="cursor logo">
+                                        
+                    <h5>Welcome to Home Chef / Restaurant Register</h5>
+                    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa.</p>
+                </div>
+                <div class="first_screen_wrapper_forum">
+                    <div class="row">
+                        <div class="col-12 col-sm-6 col-md-6 col-lg-6">
+                            <label>First Name</label>
+                            <input type="text" name="firstName" class="form-c" id="firstName" [(ngModel)]="firstName"
+                                placeholder="Jhon">
+                        </div>
+                        <div class="col-12 col-sm-6 col-md-6 col-lg-6">
+                            <label>last Name</label>
+                            <input type="text" name="" class="form-c" id="lastName" [(ngModel)]="lastName"
+                                placeholder="last name">
+                        </div>
+                        <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+                            <label>Restaurant / Business Name</label>
+                            <input type="text" name="" class="form-c" id="businessName" [(ngModel)]="businessName"
+                                placeholder="Al-Baik Restaurant">
+                        </div>
+                        <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+                            <label>Restaurant / Business Details </label>
+                            <textarea id="businessDetail" class="form-c" [(ngModel)]="businessDetail"
+                                placeholder="Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Maecenas porttitor congue massa."></textarea>
+                        </div>
+                        <div class="col-12 col-sm-6 col-md-6 col-lg-6">
+                            <label>Mobile Number</label>
+                            <input type="text" id="phoneNumber" class="form-c" [(ngModel)]="phoneNumber" name=""
+                                placeholder="949-867-5309">
+                        </div>
+                        <div class="col-12 col-sm-6 col-md-6 col-lg-6">
+                            <label>Email</label>
+                            <input type="email" name="" id="email" class="form-c" [(ngModel)]="email"
+                                placeholder="jhonsmith@gmail.com">
+                        </div>
+                        <div class="col-12 col-sm-6 col-md-6 col-lg-6">
+                            <label>Password</label>
+                            <input type="password" name="" id="password" class="form-c" [(ngModel)]="password"
+                                placeholder="************">
+                        </div>
+                        <div class="col-12 col-sm-6 col-md-6 col-lg-6">
+                            <label>Confirm Password</label>
+                            <input type="password" name="" class="form-c" id="confirmPassword"
+                                [(ngModel)]="confirmPassword" placeholder="************">
+                        </div>
+                    </div>
+                    <div class="col ">
+                        <div class="col-12 col-sm-6 col-md-6 col-lg-6">
+                            <input id="resowner" type="radio" class="custom-control-input" value="resowner" name="subType"
+                                [(ngModel)]="subType">
+                            <label class="custom-control-label" for="resowner">Restaurant Owner</label>
+                        </div>
+
+                        <div class="col-12 col-sm-6 col-md-6 col-lg-6">
+                            <input id="homechef" type="radio" class="custom-control-input" value="homechef" name="subType"
+                                [(ngModel)]="subType">
+                            <label class="custom-control-label" for="homechef">Homechef</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="first_screen_wrapper_footer">
+                    <button (click)="register()" [disabled]="this.isLoading">register
+                        <i class="fa fa-spinner fa-spin" *ngIf="this.isLoading"></i>
+                    </button>
+                    <h5>Already have an account? <a href="./vendor-login">login</a></h5>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,464 @@
+<section class="pop-up-section">
+    <div class="modal fade show" id="pop-up-form" role="dialog" aria-modal="true">
+        <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="pop-up-form">
+                <div class="form-right-wrapper">
+                    <div class="form-logo-wrapper">
+                    <button type="button" class="close" data-dismiss="modal">×</button>
+                    </div>
+                    <div class="quote-form-header">
+                    <p>Chicken Mac, McChicken without Cheese,6 pieces nuggets without Sauce & 3 Medium Carbonated Soft Drinks</p>
+                    </div>
+                    <div class="form-inner">
+                    <div class="form-inner-1">
+                        <div class="row">
+                            <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+                                <h6>Add on. <span>optional</span></h6>
+                                <p>optional</p>
+                            </div>
+                            <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+                                <div id="checkboxes">
+                                    <div class="checkbox">
+                                        <input type="checkbox" id="checkbox-1" name="example" checked/>
+                                        <label for="checkbox-1"></label>
+                                        <h5>Curly Fries <span>+$5.00</span></h5>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-inner-2">
+                        <div class="row">
+                            <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+                                <h6>Choose Your Soft Drink. <span>1 required</span></h6>
+                                <p>Select 1</p>
+                            </div>
+                            <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+                                <div id="radio-buttons">
+                                <div class="radio">
+                                    <input type="radio" id="radio-1" name="example" checked/>
+                                    <label for="radio-1"></label>
+                                    <span>Coke</span>
+                                </div>
+
+                                <div class="radio">
+                                    <input type="radio" id="radio-2" name="example"/>
+                                    <label for="radio-2"></label>
+                                    <span>Sprite</span>
+                                </div>
+
+                                <div class="radio">
+                                    <input type="radio" id="radio-3" name="example"/>
+                                    <label for="radio-3"></label>
+                                    <span>Fanta</span>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+                    <div class="pop-up-footer">
+                        <h6>Special instuction</h6>
+                        <p>you can write down here any special instuctions</p>
+                        <textarea placeholder="E.g No Mayo"></textarea>
+                        <h6>If this product is not available</h6>
+                        <select>
+                            <option>Remove it form my order</option>
+                            <option>Remove it form my order</option>
+                        </select>
+                        <div class="row">
+                            <div class="col-12 col-sm-12 col-md-4 col-lg-3">
+                                <div class="qty">
+                                    <span class="minus">-</span>
+                                    <input type="number" class="count" name="qty" value="1">
+                                    <span class="plus">+</span>
+                                </div>
+                            </div>
+                            <div class="col-12 col-sm-12 col-md-8 col-lg-9">
+                                <button>Add to cart</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+    </div>
+</section>
+
+<section class="p-0" data-aos="fade-in" data-aos-delay="100">
+  <div class="text-center">
+      <div class="resturant-list-item resturant-list-item-inner aos-init aos-animate" data-aos="fade-up">
+          <div class="resturant-banner" style="background-image: url({{imageBase+restaurantData?.coverPhoto}});">
+          </div>
+          <div class="content">
+              <div class="logo-wrapper">
+                  <div class="logo">
+                      <img src="{{imageBase+restaurantData?.image}}" class="img-fluid">
+                  </div>
+              </div>
+              <h2 class="section-heading section-heading-no-b mt-4">{{restaurantData?.name}} <span class="para"><img src="assets/images/star.webp"> 4.1/5 (2k+)</span></h2>
+              <p class="para mt-0 text-center">
+                {{restaurantData?.city}}, {{restaurantData?.state}}
+            </p>
+            <!--  
+            <ul class="para d-flex justify-content-center flex-wrap food-cat">
+                  <li>American</li>
+                  <li>Beverages</li>
+                  <li>Burgers</li>
+                  <li>Deserts</li>
+                  <li>Fast Food</li>
+              </ul>
+            -->
+          </div>
+      </div>                                                                                 
+  </div>
+</section>      
+
+
+<div class="detail_slider_wrapper">
+  <div class="container">
+      <div class="row">
+          <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+              <div class="owl-carousel owl-theme">
+                  <div *ngFor="let m of restaurantData?.categoryName"  class="item">
+                      <div class="detail_slider_wrapper_text">
+                          <a class="cat-link" href="#{{m.toLowerCase()}}"><h4>{{m.toUpperCase()}}</h4></a>
+                      </div>
+                  </div>
+                  <!--
+                  <div class="item">
+                      <div class="detail_slider_wrapper_text">
+                        <a class="cat-link" href="#cat2"><h4>EXCLUSIVE DISCOUNTED DEAL</h4></a>
+                      </div>
+                  </div>
+                  <div class="item">
+                      <div class="detail_slider_wrapper_text">
+                        <a class="cat-link" href="#cat3"><h4>MEALS & BURGERS</h4></a>
+                      </div>
+                  </div>
+                  <div class="item">
+                      <div class="detail_slider_wrapper_text">
+                        <a class="cat-link" href="#cat4"><h4>VALUE MEALS</h4></a>
+                      </div>
+                  </div>
+                  <div class="item">
+                      <div class="detail_slider_wrapper_text">
+                        <a class="cat-link" href="#cat5"><h4>CRISPY CHICKEN</h4></a>
+                      </div>
+                  </div>    
+                  <div class="item">
+                    <div class="detail_slider_wrapper_text">
+                      <a class="cat-link" href="#cat5"><h4>DESERTS</h4></a>
+                    </div>
+                </div>
+            -->                        
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+
+<section class="p-0" data-aos="fade-up">
+  <div class="container">
+      <div class="row">
+          <div class="col-12 col-sm-8 col-md-8 col-lg-8">
+              <div  *ngFor="let mm of restaurantData?.categoryName" class="row" id="{{mm.toLowerCase()}}">
+                  <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+                      <div class="row mb-2">
+                          <div class="col-md-12 p7-5">
+                              <h3 class="small-heading mt-4 mb-3 text-black">{{mm}}</h3>
+                          </div>
+                          <ng-container  *ngFor="let md of restaurantData.menuData; let i = index">
+                            <div   *ngIf="mm == md.categoryId.name && md.isAvailable"  class="col-md-6 p7-5">
+                                <div   class="menu-card">
+                                    <img src="{{imageBase+md.image}}" class="rounded float-left mr-2" height="100px" width="100px" />
+                                    <p class="menu-title"><b>{{md.name}}</b> </p>
+                                    <div class="d-flex justify-content-between flex-wrap">
+                                        <span *ngIf="md.isDiscount" class="price"> <b class="strikethrough" >${{md.price}}</b>  ${{calDiscount(md)}} </span>
+                                        <span *ngIf="!md.isDiscount" class="price">$ {{md.price}}</span>
+
+                                        <!-- data-toggle="modal" data-target="#pop-up-form" -->
+                                        <a  (click)="addToCart(md._id,i)" href="javascript:;" class="add-btn" >+</a>
+                                    </div>
+                                </div>
+                        </div>
+
+                          </ng-container>
+
+                          <!--
+                          <div class="col-md-6 p7-5">
+                              <div class="menu-card">
+                                  <p class="menu-title"><b>Spicy Grand Chicken &amp; Regular. Drink</b> </p>
+                                  <div class="d-flex justify-content-between flex-wrap">
+                                      <span class="price">$ 12.00</span>
+                                      <a href="#" class="add-btn" data-toggle="modal" data-target="#pop-up-form">+</a>
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="col-md-6 p7-5">
+                              <div class="menu-card">
+                                  <p class="menu-title"><b>Spicy Grand Chicken &amp; Regular. Drink</b> </p>
+                                  <div class="d-flex justify-content-between flex-wrap">
+                                      <span class="price">$ 12.00</span>
+                                      <a href="#" class="add-btn" data-toggle="modal" data-target="#pop-up-form">+</a>
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="col-md-6 p7-5">
+                              <div class="menu-card">
+                                  <p class="menu-title"><b>Spicy Grand Chicken &amp; Regular. Drink</b> </p>
+                                  <div class="d-flex justify-content-between flex-wrap">
+                                      <span class="price">$ 12.00</span>
+                                      <a href="#" class="add-btn" data-toggle="modal" data-target="#pop-up-form">+</a>
+                                  </div>
+                              </div>
+                          </div>
+                        -->
+                      </div>
+                  </div>
+              </div>
+            <!--  <div class="row" id="cat2">
+                  <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+                      <div class="row mb-2">
+                          <div class="col-md-12 p7-5">
+                              <h3 class="small-heading mt-4 mb-3 text-black">Exclusive Discounted Deal</h3>
+                          </div>
+                          <div class="col-md-6 p7-5">
+                              <div class="menu-card">
+                                  <p class="menu-title"><b>Spicy Grand Chicken &amp; Regular. Drink</b> </p>
+                                  <div class="d-flex justify-content-between flex-wrap">
+                                      <span class="price">$ 12.00</span>
+                                      <a href="#" class="add-btn" data-toggle="modal" data-target="#pop-up-form">+</a>
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="col-md-6 p7-5">
+                              <div class="menu-card">
+                                  <p class="menu-title"><b>Spicy Grand Chicken &amp; Regular. Drink</b> </p>
+                                  <div class="d-flex justify-content-between flex-wrap">
+                                      <span class="price">$ 12.00</span>
+                                      <a href="#" class="add-btn" data-toggle="modal" data-target="#pop-up-form">+</a>
+                                  </div>
+                              </div>
+                          </div>
+                        
+                      </div>
+                  </div>
+              </div>
+              <div class="row" id="cat3">
+                  <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+                      <div class="row mb-2">
+                          <div class="col-md-12 p7-5">
+                              <h3 class="small-heading mt-4 mb-3 text-black">MEALS & BURGERS</h3>
+                          </div>
+                          <div class="col-md-6 p7-5">
+                              <div class="menu-card">
+                                  <p class="menu-title"><b>Spicy Grand Chicken &amp; Regular. Drink</b> </p>
+                                  <div class="d-flex justify-content-between flex-wrap">
+                                      <span class="price">$ 12.00</span>
+                                      <a href="#" class="add-btn">+</a>
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="col-md-6 p7-5">
+                              <div class="menu-card">
+                                  <p class="menu-title"><b>Spicy Grand Chicken &amp; Regular. Drink</b> </p>
+                                  <div class="d-flex justify-content-between flex-wrap">
+                                      <span class="price">$ 12.00</span>
+                                      <a href="#" class="add-btn">+</a>
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="col-md-6 p7-5">
+                              <div class="menu-card">
+                                  <p class="menu-title"><b>Spicy Grand Chicken &amp; Regular. Drink</b> </p>
+                                  <div class="d-flex justify-content-between flex-wrap">
+                                      <span class="price">$ 12.00</span>
+                                      <a href="#" class="add-btn">+</a>
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="col-md-6 p7-5">
+                              <div class="menu-card">
+                                  <p class="menu-title"><b>Spicy Grand Chicken &amp; Regular. Drink</b> </p>
+                                  <div class="d-flex justify-content-between flex-wrap">
+                                      <span class="price">$ 12.00</span>
+                                      <a href="#" class="add-btn">+</a>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+              <div class="row" id="cat4">
+                  <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+                      <div class="row mb-2">
+                          <div class="col-md-12 p7-5">
+                              <h3 class="small-heading mt-4 mb-3 text-black">VALUE MEALS</h3>
+                          </div>
+                          <div class="col-md-6 p7-5">
+                              <div class="menu-card">
+                                  <div class="row m-0">
+                                      <div class="col-9 p-0">
+                                          <p class="menu-title"><b>Double Beef n Cheese Burger</b> </p>
+                                          <p class="menu-desc">Get double tne flavour! The first hit of  sear-sizzled 100% pure beef gets your...</p>
+                                      </div>
+                                      <div class="col-3 p-0">
+                                          <img src="assets/images/deal1.webp" class="img-fluid">
+                                      </div>
+                                  </div>
+                                  <div class="d-flex justify-content-between flex-wrap">
+                                      <span class="price">$ 12.00</span>
+                                      <a href="#" class="add-btn">+</a>
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="col-md-6 p7-5">
+                              <div class="menu-card">
+                                  <div class="row m-0">
+                                      <div class="col-9 p-0">
+                                          <p class="menu-title"><b>Double Beef n Cheese Burger</b> </p>
+                                          <p class="menu-desc">Get double tne flavour! The first hit of  sear-sizzled 100% pure beef gets your...</p>
+                                      </div>
+                                      <div class="col-3 p-0">
+                                          <img src="assets/images/deal1.webp" class="img-fluid">
+                                      </div>
+                                  </div>
+                                  <div class="d-flex justify-content-between flex-wrap">
+                                      <span class="price">$ 12.00</span>
+                                      <a href="#" class="add-btn">+</a>
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="col-md-6 p7-5">
+                              <div class="menu-card">
+                                  <div class="row m-0">
+                                      <div class="col-9 p-0">
+                                          <p class="menu-title"><b>Double Beef n Cheese Burger</b> </p>
+                                          <p class="menu-desc">Get double tne flavour! The first hit of  sear-sizzled 100% pure beef gets your...</p>
+                                      </div>
+                                      <div class="col-3 p-0">
+                                          <img src="assets/images/deal1.webp" class="img-fluid">
+                                      </div>
+                                  </div>
+                                  <div class="d-flex justify-content-between flex-wrap">
+                                      <span class="price">$ 12.00</span>
+                                      <a href="#" class="add-btn">+</a>
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="col-md-6 p7-5">
+                              <div class="menu-card">
+                                  <div class="row m-0">
+                                      <div class="col-9 p-0">
+                                          <p class="menu-title"><b>Double Beef n Cheese Burger</b> </p>
+                                          <p class="menu-desc">Get double tne flavour! The first hit of  sear-sizzled 100% pure beef gets your...</p>
+                                      </div>
+                                      <div class="col-3 p-0">
+                                          <img src="assets/images/deal1.webp" class="img-fluid">
+                                      </div>
+                                  </div>
+                                  <div class="d-flex justify-content-between flex-wrap">
+                                      <span class="price">$ 12.00</span>
+                                      <a href="#" class="add-btn">+</a>
+                                  </div>
+                              </div>
+                          </div>
+                                                                                  
+                      </div>
+                  </div>
+              </div>   
+              <div class="row" id="cat5">
+                  <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+                      <div class="row mb-2">
+                          <div class="col-md-12 p7-5">
+                              <h3 class="small-heading mt-4 mb-3 text-black">Desserts</h3>
+                          </div>
+                          <div class="col-md-6 p7-5">
+                              <div class="menu-card menu-card-img">
+                                  <div class="row m-0">
+                                      <div class="col-9 p-0">
+                                          <p class="menu-title"><b>Strawberry Sundae</b> </p>
+                                          <p class="menu-desc">Let the love affair begin! It's a delicious delight of sundae mix made with milk ...</p>
+                                      </div>
+                                      <div class="col-3 p-0">
+                                          <img src="assets/images/sweet-1.webp" class="img-fluid">
+                                      </div>
+                                  </div>
+                                  <div class="d-flex justify-content-between flex-wrap">
+                                      <span class="price">$ 5.00</span>
+                                      <a href="#" class="add-btn">+</a>
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="col-md-6 p7-5">
+                              <div class="menu-card menu-card-img">
+                                  <div class="row m-0">
+                                      <div class="col-9 p-0">
+                                          <p class="menu-title"><b>Sundae Hot Fudge</b> </p>
+                                      </div>
+                                      <div class="col-3 p-0">
+                                          <img src="assets/images/sweet-2.webp" class="img-fluid">
+                                      </div>
+                                  </div>
+                                  <div class="d-flex justify-content-between flex-wrap">
+                                      <span class="price">$ 12.00</span>
+                                      <a href="#" class="add-btn">+</a>
+                                  </div>
+                              </div>
+                          </div>                                                  
+                      </div>
+                  </div>
+              </div>
+            -->
+          </div>
+          <div class="col-12 col-sm-4 col-md-4 col-lg-4">
+              <div class="calculator_wrapper">
+                  <h4>Your Cart</h4>
+              </div>
+            <ng-container *ngIf="orderData.length > 0" >
+                <div   class="calculator_wrapper_box_01">
+                    <h5>Order Items</h5>
+                    <ul *ngFor="let order of orderData" >
+                        <li>{{order.quantity}}  {{order.name}} <span>$ {{order.price}}</span></li>
+                        <li>
+                            <div class="qty">
+                                <span (click)="orderQuantity(0,order.id)"  class="">-</span>
+                                <input type="text" class="count" name="qty" value="{{order.quantity}}">
+                                <span  (click)="orderQuantity(1,order.id)" class="">+</span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+  
+            </ng-container>
+            <ng-container *ngIf="orderData.length ==  0" >
+                <div class="calculator_wrapper_box_01 calculator_wrapper_box_02 calculator_wrapper_box_03">
+                    <ul>
+                        <li><img src="assets/images/close.webp" class="img-fluid"></li>
+                        <li>
+                            <p>Cart is empty.</p>
+                        </li>
+                    </ul>
+                </div>
+    
+            </ng-container>
+              <div class="calculator_wrapper_box_01">
+                  <h5>Order Summary</h5>
+                  <ul>
+                      <li>Subtotal <span> $ {{subPrice}}</span></li>
+                     <!--
+                      <li>Delivery fee <span>$ 00.00</span></li>
+                      -->
+                      <li>Total (Incl. GST) <span>$ {{totalPrice}}</span></li>
+                  </ul>
+                  <button (click)="checkout()"  >checkout</button>
+                  <br/>
+                  <br/>
+              </div>
+          </div>
+      </div>                                             
+  </div>
+</section>

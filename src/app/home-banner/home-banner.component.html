@@ -1,0 +1,41 @@
+<section class="banner-slider p-0" data-aos="fade-down" data-aos-delay="100">
+  <div class="banner-slider-track">
+      <div class="slide active" style="background-image: url('assets/images/slide1.webp')" data-slide-heading="Discover restaurants that deliver near you" data-slide-sub-heading="Best restaurants in the city delivering to your doorstep">
+      </div>
+      <div class="slide" style="background-image: url('assets/images/slide1.webp')" data-slide-heading="Discover restaurants that deliver near you 2" data-slide-sub-heading="Best restaurants in the city delivering to your doorstep 2">
+      </div>
+      <div class="slide" style="background-image: url('assets/images/slide1.webp')" data-slide-heading="Discover restaurants that deliver near you 3" data-slide-sub-heading="Best restaurants in the city delivering to your doorstep 3">
+      </div>
+  </div>
+  <div class="banner-slider-content" data-aos="zoom-in" data-aos-delay="200">
+      <div class="container h-100">
+          <div class="row h-100 align-items-center position-relative">
+              <div class="col-md-8 offset-md-2">
+                  <div class="banner-content-inner">
+                      <h1 class="heading text-white" data-aos="zoom-in" data-aos-delay="400"></h1>
+                      <h1 class="sub-heading text-white" data-aos="zoom-in" data-aos-delay="450"></h1>
+                      <div class="banner-search" data-aos="zoom-in" data-aos-delay="500">
+                          <form action="#" method="get">
+                              <div class="input-group input-group-lg">
+                                  <div class="input-group-prepend">
+                                      <span class="input-group-text bg-white" id="inputGroup-sizing-lg"><img src="assets/images/location.webp"></span>
+                                  </div>
+                                  <input  id="address"  class="address" name="address"  type="text" class="form-control" aria-label="Large" aria-describedby="inputGroup-sizing-sm" placeholder="Enter Your Location" (keyup)="changeSearch($event)"  (keydown.enter)="$event.preventDefault()"  autocorrect="off" autocapitalize="off" spellcheck="off" #search >
+                                  <div class="input-group-append">
+                                      <span class="input-group-text bg-white"  (click)="showPosition()" id="inputGroup-sizing-lg"><img  title="Current location" src="assets/images/location-pointer.webp"></span>                    
+                                      <button type="button" (click)= "searchs()" class="btn btn-search" type="button">Search</button>
+                                   <!-- routerLink="/search" routerLinkActive="active"--> 
+                                  </div>
+                              </div>
+                          </form>
+                      </div>
+                  </div>
+              </div>
+              <div class="col-md-12 dots-col">
+                  <ul class="dots m-0 p-0 d-flex justify-content-center">
+                  </ul>
+              </div>
+          </div>
+      </div>
+  </div>
+</section>

@@ -1,0 +1,40 @@
+<p>&nbsp; &nbsp;</p>
+<section class="p-0">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-10 col-sm-10 offset-sm-1 offset-md-1 text-center">
+                <div   class="resturant-list-item" data-aos="fade-up"  data-aos-delay="100">
+                      <div class="resturant-banner"   style="height: 225px;background-image: url({{coverImage}});">
+                          <div class="right-badge">
+                              <a (click)="triggerImg(1)" title="Edit profile cover" >
+                                 &nbsp;  &nbsp; &nbsp;  <i class="fa fa-edit"></i>
+                              </a>
+                          </div>
+                      </div>
+                      <input  style="display:none" class="form-c" type="file" id="image1"  name="image" (change)="coverProgress($event)" />
+
+                      <div class="content">
+                          <div class="logo-wrapper">
+
+                              <div   class="logo cursor">
+    
+                                  <img src="{{logoImage}}" class="img-fluid">
+                                  <a  style="margin-top:80px;margin-left:-20px" class="right-badge" (click)="triggerImg(2)" title="Edit profile cover" >
+                                    <i class="fa fa-edit"></i>
+                                  </a>
+
+                              </div>
+                          </div>
+                          <input  style="display:none" class="form-c" type="file" id="image2"  name="image" (change)="imageProgress($event)" />
+
+                          <h2   class="cursor section-heading section-heading-no-b my-1">{{businessName}}</h2>
+                          <p class="para mt-0 text-center mb-1">
+                          </p>
+                      </div>
+                </div>        
+            </div>
+        </div>
+    </div>
+  </section> 
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  

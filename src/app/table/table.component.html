@@ -1,0 +1,321 @@
+<p>&nbsp; &nbsp; </p>
+<section class="p-0" >
+    <div class="text-center">
+        <h3>
+            Menu Management
+        </h3>
+        <div class="cards">
+            <div class="container" >
+                <button  data-toggle="modal" data-target="#pop-up-form"  class="float-right btn btn-success" >Create Menu</button>
+                    <p>&nbsp; &nbsp;</p>
+            </div>
+            <div class="card-block table-border-style p-3 pt-4">
+                <div class="table-responsive">
+                    <table class="table table-custom">
+                        <thead>
+                            <tr>
+                                <th> Name</th>
+                                <th>Image</th>
+                                <th>Short Desc</th>
+                                <th>Default Price</th>
+                                <th>Description</th>
+                                <th>Category</th>
+                                <th>Status</th>
+                                <th>Make Available</th>
+                                <th>Variation</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            <ng-container *ngFor="let menu of menus;index as i;" >
+                                <tr>
+                                   
+                                    <td>{{menu.name}}</td>
+                                    <td><img src="{{imgageUrl+menu.image}}" height="100px"  /></td>
+                                    <td>{{menu.shortDesc}}</td>
+                                    <td>{{menu.price}}</td>
+                                    <td>{{menu.longDesc}}</td>
+                                    <td>{{menu.categoryId.name}}</td>
+                                    <td>{{menu.status}}</td>
+                                    <td>
+                                        <label class="switch">
+                                            <input type="checkbox" [checked]="menu.isAvailable" (change)="changeStatus(menu._id, menu.isAvailable)">
+                                            <span class="slider round"></span>
+                                        </label>                                                   
+
+
+
+                                    </td>
+                                    <td><a  data-toggle="modal" data-target="#pop-up-variation" (click)="variation(menu._id)" href="javascript:;"><i class="fa fa-desktop" aria-hidden="true"></i>
+                                    </a></td>
+                                    <td>
+                                        <a href="javascript:;"  data-toggle="modal" data-target="#pop-up-form-edit"  (click)="editForm(menu._id,i)" class="action-btn">
+                                            <i class="fa fa-edit"></i></a>
+                                        &nbsp;
+                                        <a href="javascript:;"  (click)="remove(menu._id)" class="action-btn"><i class="fa fa-trash"></i></a>
+                                    </td>
+                                </tr>
+    
+                            </ng-container>
+                            <tr *ngIf="!menus">
+                                <td colspan="6">No record found</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+</div>
+
+  </section>
+  <section class="pop-up-section">
+    <div class="modal fade show" id="pop-up-form" role="dialog" aria-modal="true">
+        <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="pop-up-form">
+                <div class="form-right-wrapper">
+                    <div class="form-logo-wrapper">
+                    <button type="button" class="close" data-dismiss="modal">×</button>
+                    </div>
+                    <div class="quote-form-header">
+                    <p>Add Menu</p>
+                    </div>
+                    <div class="form-inner">
+                    <div class="form-inner-1">
+                        <div class="row">
+                            <div class="col-12 col-sm-12 col-md-12 ">
+                                <label>
+                                    Select Category
+                                </label>
+                                <select  id="categoryId" name="categoryId" [(ngModel)]="categoryId"  class="form-control form-c" >
+                                    <option value="null" >
+                                       Select Category 
+                                    </option>
+                                    <ng-container *ngFor="let cat of category">
+                                        <option value="{{cat._id}}" >{{cat.name}}</option>
+
+                                    </ng-container>
+                                </select>
+                                </div>
+                                <div class="col-12 col-sm-12 col-md-12 mt-3">
+                                    <label>
+                                        Item Image
+                                    </label>
+                                </div>
+                                <div class="form-group ">
+                                    <input class="form-c" type="file" name="image" (change)="fileProgress($event)" />
+                                </div>
+                                <div *ngIf="fileUploadProgress">
+                                    Upload progress: {{ fileUploadProgress }}
+                                </div>
+                                <div class="col-12 col-sm-12 col-md-12 mt-3" *ngIf="previewUrl">
+                                    <img [src]="previewUrl" height="80" />                 
+                                </div>
+                                <div class="col-12 col-sm-12 col-md-12 mt-3">
+                                    <label>
+                                        Item Name
+                                    </label>
+                                    <input class="form-control form-c"  id="itemName" name="itemName" [(ngModel)]="itemName"  type="text" />
+                                </div>
+                                    <div class="col-12 col-sm-12 col-md-12 mt-3">
+                                        <label>
+                                            Short Desc
+                                        </label>
+                                        <input class="form-control form-c" id="shortDesc"  [(ngModel)]="shortDesc" name="shortDesc" type="text" />
+                                        </div>
+                                        <div class="col-12 col-sm-12 col-md-12  mt-3">
+                                            <label>
+                                                Price
+                                            </label>
+                                            <input class="form-control form-c" id="price" name="price" [(ngModel)]="price" type="text" />
+                                        </div>
+                                        <div class="col-12 col-sm-12 col-md-12  mt-3">
+                                            <label>
+                                                Description (Optional)
+                                            </label>
+                                            <textarea class="form-control form-c" id="longDesc" name="longDesc" [(ngModel)]="longDesc"></textarea>
+                                        </div>
+                        </div>
+                    </div>
+                    </div>
+                    <div class="pop-up-footer">
+                        <div class="row">
+                            <div class="col-12 col-sm-12 col-md-8 col-lg-9 mt-3">
+                                <button (click)="onSubmit()"  >Add </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+    </div>
+</section>
+
+<section class="pop-up-section">
+    <div class="modal fade show" id="pop-up-form-edit" role="dialog" aria-modal="true">
+        <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="pop-up-form">
+                <div class="form-right-wrapper">
+                    <div class="form-logo-wrapper">
+                    <button type="button" class="close" data-dismiss="modal">×</button>
+                    </div>
+                    <div class="quote-form-header">
+                    <p>Edit Menu</p>
+                    </div>
+                    <div class="form-inner">
+                    <div class="form-inner-1">
+                        <div class="row">
+                            <div class="col-12 col-sm-12 col-md-12 ">
+                                <label>
+                                    Select Category
+                                </label>
+                                <select  id="categoryIdE" name="categoryIdE" [(ngModel)]="categoryIdE"  class="form-control form-c" >
+                                    <option value="null" >
+                                       Select Category 
+                                    </option>
+                                    <ng-container *ngFor="let cat of category">
+                                        <option value="{{cat._id}}" >{{cat.name}}</option>
+
+                                    </ng-container>
+                                </select>
+                                </div>
+                                <div class="col-12 col-sm-12 col-md-12 mt-3">
+                                    <label>
+                                        Item Image
+                                    </label>
+                                </div>
+                                <div class="form-group " *ngIf="!previewUrlE" >
+                                    <input class="form-c" type="file" name="imageE" (change)="fileProgress($event)" />
+                                </div>
+                                <div *ngIf="fileUploadProgress">
+                                    Upload progress: {{ fileUploadProgress }}
+                                </div>
+                                <div class="col-12 col-sm-12 col-md-12 mt-3" *ngIf="previewUrlE">
+                                    <img [src]="previewUrlE" height="80" />   &nbsp; &nbsp;
+                                    <span (click)="removeImg()" style="color:orange" >Change image</span>              
+                                </div>
+                                <div class="col-12 col-sm-12 col-md-12 mt-3">
+                                    <label>
+                                        Item Name
+                                    </label>
+                                    <input class="form-control form-c"  id="itemNameE" name="itemNameE" [(ngModel)]="itemNameE"  type="text" />
+                                </div>
+                                    <div class="col-12 col-sm-12 col-md-12 mt-3">
+                                        <label>
+                                            Short Desc
+                                        </label>
+                                        <input class="form-control form-c" id="shortDescE"  [(ngModel)]="shortDescE" name="shortDescE" type="text" />
+                                        </div>
+                                        <div class="col-12 col-sm-12 col-md-12  mt-3">
+                                            <label>
+                                                Price
+                                            </label>
+                                            <input class="form-control form-c" id="price" name="priceE" [(ngModel)]="priceE" type="text" />
+                                        </div>
+                                        
+                                        <div class="col-12 col-sm-12 col-md-12  mt-3">
+                                            <label>
+                                                Description (Optional)
+                                            </label>
+                                            <textarea class="form-control form-c" id="longDescE" name="longDescE" [(ngModel)]="longDescE"></textarea>
+                                        </div>
+            
+                        </div>
+                    </div>
+                    </div>
+                    <div class="pop-up-footer">
+                        <div class="row">
+                            <div class="col-12 col-sm-12 col-md-8 col-lg-9 mt-3">
+                                <button (click)="onSubmitEdit()"  >Edit Save </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+    </div>
+</section>
+
+<section class="pop-up-section">
+    <div class="modal fade show" id="pop-up-variation" role="dialog" aria-modal="true">
+        <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="pop-up-form">
+                <div class="form-right-wrapper">
+                    <div class="form-logo-wrapper">
+                    <button type="button" class="close" data-dismiss="modal">×</button>
+                    </div>
+                    <div class="quote-form-header">
+                    <p>Add Variants /add-ons</p>
+                    </div>
+                    <div class="form-inner">
+                    <div class="form-inner-1">
+                        <div class="row">
+                                <div class="col-12 col-sm-12 col-md-12 mt-3">
+                                    <label>
+                                        Variants/add-ons Name
+                                    </label>
+                                    <input class="form-control form-c"  id="vName"  [(ngModel)]="vName"  name="vName"   type="text" />
+                                </div>
+                                <div class="col-12 col-sm-12 col-md-12 mt-3">
+                                    <label>
+                                        Type
+                                    </label>
+                                    <br/>
+                                    <input class="form-c"  name="vType"   [(ngModel)]="vType" (click)="variantTypeSel(1)"  value="1" type="radio" />
+                                    &nbsp;
+                                    Single 
+                                    &nbsp; &nbsp; &nbsp; &nbsp;
+                                    <input class=" form-c"  name="vType"  [(ngModel)]="vType" (click)="variantTypeSel(2)"  value="2"  type="radio" />
+                                    &nbsp;
+                                    Multiple
+                                    <p>&nbsp; &nbsp; </p>
+
+                                </div>
+                            <ng-container *ngIf="vType == 2"> 
+                                <form [formGroup]="productForm" (ngSubmit)="onSubmits()">
+    
+                                    <table class="table table-bordered" formArrayName="quantities">
+                                      <tr>
+                                        <th colspan="2">Add Multiple Quantity:</th>
+                                        <th width="150px"><button type="button" (click)="addQuantity()" class="btn btn-primary">Add More</button></th>
+                                      </tr>
+                                      <tr *ngFor="let quantity of quantities().controls; let i=index" [formGroupName]="i">
+                                        <td>
+                                            Name :
+                                            <input type="text" formControlName="name" class="form-control">
+                                        </td>
+                                        <td>
+                                            Price:
+                                            <input type="text" formControlName="price" class="form-control">
+                                        </td>
+                                        <td>
+                                            <button (click)="removeQuantity(i)" class="btn btn-danger">Remove</button>
+                                        </td>
+                                      </tr>
+                                    </table>
+                                   
+                                    
+                                  </form>                                
+                            </ng-container>
+                        </div>
+                    </div>
+                    </div>
+                    <div class="pop-up-footer">
+                        <div class="row">
+                            <div class="col-12 col-sm-12 col-md-8 col-lg-9 mt-3">
+                                <button (click)="onSubmits()"  >Edit Save </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,20 @@
+<!--The content below is only a placeholder and can be replaced.-->
+<!--
+<div style="text-align:center">
+  <nav>
+<a routerLink="/" >Home</a>
+
+<a routerLink="/posts" routerLinkActive="active">Posts</a>
+
+<a routerLink="/king" routerLinkActive="active">King</a>
+
+  </nav>
+
+</div>
+-->
+<app-header  *ngIf="routerUr != '/login' && routerUr != '/signup' && routerUr != '/signup-resturant' && routerUr != '/vendor-login' "></app-header>
+
+
+<router-outlet></router-outlet>
+
+<app-footer *ngIf="routerUr != '/login' && routerUr != '/signup' && routerUr != '/signup-resturant' && routerUr != '/vendor-login' " ></app-footer>
